@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">LibDumper</string>
+    <string name="package_name">Package Name</string>
+    <string name="select_your_dumper">Select Your Dumper</string>
+    <string name="go_to_github_repository">Go To Github Repository</string>
+    <string name="dump_metadata">Dump global-metadata</string>
+    <string name="clear">Clear</string>
+    <string name="rebuild_sofile">Don\'t Rebuild SoFile</string>
+    <string name="libname_leave_blank_if_wanna_use_default">LibName [leave blank if want to use default]</string>
+    <string name="custom_end_address">Custom End Address</string>
+    <string name="dump">DUMP</string>
+    <string name="fix_elf_dump">Auto Fix Dump</string>
+    <string name="select_to_dump">Select to Dump</string>
+    <string name="select_app">Select App</string>
+    <string name="single_mutiple">Single/Mutiple</string>
+
+</resources>

@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    buildFeatures {
+        viewBinding true
+    }
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.libdumper"
+        minSdkVersion 19
+        //geting all running apps cannot work on Android 11 which is targetSdkVersion 30
+        targetSdkVersion 29
+        versionCode 3
+        versionName '3.5'
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    compileOptions {
+        // This library uses Java 8 features, this is required
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+        }
+    }
+}
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+
+    implementation "com.github.topjohnwu.libsu:core:3.1.2"
+    implementation "com.github.topjohnwu.libsu:service:3.1.2"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
+
+    //Used to show apps icon
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+}
